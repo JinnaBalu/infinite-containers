@@ -66,7 +66,7 @@ If you find any issues please raise and issue on issues tab
 
 - Proxy 
 - Zero downtime with load balancer
-- Pen COnfigurations for security
+- Pen Configurations for security
 - SEO management 
 - Static content between servers
 - Maintanance page

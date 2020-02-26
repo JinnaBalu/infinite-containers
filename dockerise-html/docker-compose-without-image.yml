@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  platfobs-static:
+    image: nginx:latest
+    volumes:
+      - ./content:/usr/share/nginx/html:ro
+    container_name: platfobs_static_app
+    restart: always
+    ports: ["8080:80"]
+    

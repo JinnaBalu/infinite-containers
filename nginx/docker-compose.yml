@@ -9,6 +9,4 @@ services:
       - "./html:/usr/share/nginx/html:ro"
       - "./logs/nginx:/var/log/nginx"
     restart: always
-    ports:
-      - "80:80"
-      - "443:443"
+    ports: ["80:80", "443:443"]
