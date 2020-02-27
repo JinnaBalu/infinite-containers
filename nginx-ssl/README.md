@@ -1,7 +1,14 @@
 # NGINX as a Docker Container
 
-### Create Environment
+## Create the ssl certificates
 
+**NOTE: Ignore if you have ssl of your own**
+
+We can start off by creating a directory that will be used to hold all of our SSL information.
+
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
+```
 
 ## Create a local host 
 
