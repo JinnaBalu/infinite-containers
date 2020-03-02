@@ -108,3 +108,19 @@ start the node
 create the index
 create reindex the data
 
+
+```bash
+curl -X POST "localhost:9200/_reindex?wait_for_completion=true&pretty=true" -H 'Content-Type: application/json' -d'
+{
+  "source": {
+    "remote": {
+      "host": "http://192.168.0.13:9200"
+    },
+    "index": "employee",
+    "type": "employee"
+  },
+  "dest": {
+    "index": "employee"
+  }
+}'
+```
