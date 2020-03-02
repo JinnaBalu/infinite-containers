@@ -3,29 +3,29 @@
     "index": {
       "number_of_shards": 1,
       "number_of_replicas": 1
-    },
-    "analysis": {
-      "analyzer": {
-        "analyzer-name": {
-          "type": "custom",
-          "tokenizer": "keyword",
-          "filter": "lowercase"
-        }
+    }
+  },
+  "analysis": {
+    "analyzer": {
+      "analyzer-name": {
+        "type": "custom",
+        "tokenizer": "keyword",
+        "filter": "lowercase"
       }
-    },
-    "mappings": {
+    }
+  },
+  "mappings": {
 
-      "properties": {
-        "age": {
-          "type": "text"
-        },
-        "experienceInYears": {
-          "type": "text"
-        },
-        "name": {
-          "type": "text",
-          "analyzer": "analyzer-name"
-        }
+    "properties": {
+      "age": {
+        "type": "text"
+      },
+      "experienceInYears": {
+        "type": "text"
+      },
+      "name": {
+        "type": "text",
+        "analyzer": "analyzer-name"
       }
     }
   }
