@@ -7,6 +7,8 @@ services:
     tty: true
     env_file:
       - ./.env
+    environment:
+      - 
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - "./logs/nginx:/var/log/nginx"

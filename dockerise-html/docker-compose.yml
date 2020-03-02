@@ -1,8 +1,8 @@
 version: '3'
 services:
-  platops-static:
-    image:  platops-static
-    container_name: platops_static_app
+  platfobs-static:
+    image:  platfobs-static
+    container_name: platfobs_static_app
     ports:
       - 80:80
     

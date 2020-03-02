@@ -17,7 +17,7 @@ A static web app and nginx as the reverse proxy.
 Clone this repo run the following command
 
 ```
-docker build -it platops-static .
+docker build -it platfobs-static .
 
 docker-compose up -d
 ```

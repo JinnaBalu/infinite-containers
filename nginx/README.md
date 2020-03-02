@@ -2,13 +2,18 @@
 
 ### Create Environment
 
+```bash
+touch .env
+```
+
+- Add any properties if required
 
 ## Create a local host 
 
 **NOTE : Ignore if you have public domain poit it to server IP where you run nginx**
 
 ```bash
-sudo echo "127.0.0.1 local.jinna.com" >> /etc/hosts
+sudo echo "127.0.0.1 test.nginx.com" >> /etc/hosts
 ```
 
 ## Clone
