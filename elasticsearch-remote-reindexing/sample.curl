@@ -2,13 +2,13 @@ curl -X POST "localhost:9200/_reindex?wait_for_completion=true&pretty=true" -H '
 {
   "source": {
     "remote": {
-      "host": "http://<REMOTE_ES_HOST_IP>:9200"
+      "host": "http://REMOTE_ES_HOST_IP:9200"
     },
-    "index": "country",
-    "type": "country"
+    "index": "employee",
+    "type": "employee"
   },
   "dest": {
-    "index": "country",
-    "type": "country"
+    "index": "employee",
+    "type": "employee"
   }
 }'
