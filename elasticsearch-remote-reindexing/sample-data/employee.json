@@ -17,13 +17,13 @@
 
       "properties": {
         "age": {
-          "type": "long"
+          "type": "text"
         },
         "experienceInYears": {
-          "type": "long"
+          "type": "text"
         },
         "name": {
-          "type": "string",
+          "type": "text",
           "analyzer": "analyzer-name"
         }
       }
