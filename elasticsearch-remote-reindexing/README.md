@@ -60,3 +60,42 @@ EOF
 sudo sysctl -w vm.max_map_count=262144
 ```
 To get more better answer for different environment use the stackoverflow answer for
+
+
+-- Create the indice with the name employee with the mappings and settings defined in `sample-data/employee.json` 
+
+```bash
+cd sample-data/
+
+curl -vX PUT 'localhost:9200/employee?pretty' -d @employee.json --header "Content-Type: application/json"
+```
+
+- Insert sample data into the indice
+
+```bash
+curl -X POST "localhost:9200/employee/?pretty" -H 'Content-Type: application/json' -d'
+{
+   "name": "Jinna",
+    "age" : 29,
+    "experienceInYears" : 6
+}
+'
+```
+
+- Lets insert another set of 1000 records with while loop
+
+```bash
+while ! curl -s "localhost:9200/_cat/indices?v" | grep green; do
+  sleep 0.1
+done
+
+for i in `seq 1 20`; do
+  curl -sXPUT "localhost:9200/employee/$i?pretty" -d "
+  {
+    \"name\": Jinna$i,
+    \"age\": \"$i+1\",
+    \"experienceInYears\": $i
+  }"
+done
+```
+
