@@ -73,11 +73,11 @@ curl -vX PUT 'localhost:9200/employee?pretty' -d @employee.json --header "Conten
 - Insert sample data into the indice
 
 ```bash
-curl -X POST "localhost:9200/employee/?pretty" -H 'Content-Type: application/json' -d'
+curl -X POST "localhost:9200/employee/_doc/1005?pretty" -H 'Content-Type: application/json' -d'
 {
-   "name": "Jinna",
-    "age" : 29,
-    "experienceInYears" : 6
+    "name": "Jinna",
+    "age" : "29",
+    "experienceInYears" : "6"
 }
 '
 ```
@@ -89,13 +89,22 @@ while ! curl -s "localhost:9200/_cat/indices?v" | grep green; do
   sleep 0.1
 done
 
-for i in `seq 1 20`; do
-  curl -sXPUT "localhost:9200/employee/$i?pretty" -d "
-  {
-    \"name\": Jinna$i,
-    \"age\": \"$i+1\",
-    \"experienceInYears\": $i
-  }"
+for i in `seq 1 1000`; do
+curl -X POST "localhost:9200/employee/_doc/$i?pretty" -H 'Content-Type: application/json' -d'
+{
+    "name": "Jinna$i",
+    "age" : "$i",
+    "experienceInYears" : "$i-1"
+}
+'
 done
 ```
+
+- Get the indices `curl -XGET  "localhost:9200/_cat/indices?v"`
+
+### Remote reindexing
+
+start the node
+create the index
+create reindex the data
 
