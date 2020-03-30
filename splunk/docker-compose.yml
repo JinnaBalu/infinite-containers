@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+    splunk:
+      container_name: splunk
+      image: 'splunk/splunk:latest'
+      ports: ['8000:8000']
+      environment: [
+        'SPLUNK_START_ARGS=--accept-license'
+        'SPLUNK_PASSWORD=wisestep123'
+        ]
+        
