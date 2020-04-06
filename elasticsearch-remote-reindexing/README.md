@@ -65,6 +65,7 @@ To get more better answer for different environment use the stackoverflow answer
 -- Create the indice with the name employee with the mappings and settings defined in `sample-data/employee.json` 
 
 ```bash
+
 curl -vX PUT 'localhost:9200/employee?pretty' -d @employee.json --header "Content-Type: application/json"
 ```
 
@@ -80,7 +81,7 @@ curl -X POST "localhost:9200/employee/_doc/1005?pretty" -H 'Content-Type: applic
 '
 ```
 
-- Lets insert another set of 1000 records with for loop
+- Lets insert another set of 1000 records with while loop
 
 ```bash
 while ! curl -s "localhost:9200/_cat/indices?v" | grep green; do
@@ -104,20 +105,9 @@ done
 
 start the node
 create the index
+
+
 create reindex the data
 
 
-```bash
-curl -X POST "localhost:9200/_reindex?wait_for_completion=true&pretty=true" -H 'Content-Type: application/json' -d'
-{
-  "source": {
-    "remote": {
-      "host": "http://192.168.0.13:9200"
-    },
-    "index": "employee"
-  },
-  "dest": {
-    "index": "employee"
-  }
-}'
-```
+
