@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  nginx:
+      image: nginx:latest
+      deploy:
+        restart_policy:
+          condition: 'any'
+      ports:
+          - '80:80'
+      volumes:
+          - ./nginx:/etc/nginx/conf.d
+          - ./logs/nginx:/var/log/nginx
+          - ./wordpress:/var/www/html
+      depends_on:
+          - wordpress
+  
+  mysql:
+      image: mariadb
+      deploy:
+        restart_policy:
+          condition: 'any'
+      ports:
+          - '3306:3306'
+      volumes:
+          - ./db-data:/var/lib/mysql
+      environment:
+          - MYSQL_ROOT_PASSWORD=balu123
+
+  wordpress:
+      image: wordpress:4.7.1-php7.0-fpm
+      deploy:
+        restart_policy:
+          condition: 'any'
+      ports:
+          - '9000:9000'
+      volumes:
+          - ./wordpress:/var/www/html
+      environment:
+          - WORDPRESS_DB_NAME=wpdb
+          - WORDPRESS_TABLE_PREFIX=wp_
+          - WORDPRESS_DB_HOST=mysql
+          - WORDPRESS_DB_PASSWORD=balu123
+      depends_on:
+          - mysql
