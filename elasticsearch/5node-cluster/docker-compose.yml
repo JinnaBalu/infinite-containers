@@ -1,0 +1,116 @@
+version: '3.7'
+services:
+  elasticsearch-one:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: elasticsearch-one
+    environment:
+      - node.name=elasticsearch-one
+      - cluster.name=es-docker-cluster
+      - cluster.initial_master_nodes=elasticsearch-one,elasticsearch-two,elasticsearch-three
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #Set Xmx and Xms to no more than 50% of your physical RAM. Elasticsearch requires memory for purposes other than the JVM heap and it is important to leave space for this. 
+      - network.host=0.0.0.0
+      - node.master=true
+      - node.data=false
+      - discovery.zen.minimum_master_nodes=2
+      - discovery.seed_hosts=elasticsearch-two,elasticsearch-three
+      # - discovery.zen.ping.unicast.hosts="elasticsearch-one","elasticsearch-two","lasticsearch-three" # Address has the format host:port or host. The host is either a host name to be resolved by DNS, an IPv4 address, or an IPv6 address
+      - network.bind_host=0.0.0.0
+      # - network.publish_host=192.31.2.66 IP of the host machine
+      # - discovery.zen.ping.unicast.hosts=192.31.2.66,192.31.3.66,192.31.4.66 IP example
+      # - discovery.zen.ping_timeout=3s (default) # use this property when the elasticsearch cluster are starting with gap of mothan 3s, when you atsrt all the service together you don't need to set this
+      # path.data=/var/lib/elasticsearch(custom path) - default path is /usr/share/elasticsearch/data
+      # path.logs=/var/log/elasticsearch(custom path) - default path is /usr/share/elasticsearch/logs
+      # - xpack.license.self_generated.type=trial # Default 'basic'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-one-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+  elasticsearch-two:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: elasticsearch-two
+    environment:
+      - node.name=elasticsearch-two
+      - cluster.name=es-docker-cluster
+      - cluster.initial_master_nodes=elasticsearch-one,elasticsearch-two,elasticsearch-three
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - network.host=0.0.0.0
+      - node.master=true
+      - node.data=false
+      - discovery.zen.minimum_master_nodes=2
+      - discovery.seed_hosts=elasticsearch-two,elasticsearch-three
+      # - discovery.zen.ping.unicast.hosts="elasticsearch-one","elasticsearch-two","lasticsearch-three"
+      - network.bind_host=0.0.0.0
+      # - xpack.license.self_generated.type=trial
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-two-data:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9201
+    networks:
+      - elastic
+
+  elasticsearch-three:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: elasticsearch-three
+    environment:
+      - node.name=elasticsearch-three
+      - cluster.name=es-docker-cluster
+      - cluster.initial_master_nodes=elasticsearch-one,elasticsearch-two,elasticsearch-three
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - network.host=0.0.0.0
+      - node.master=true
+      - node.data=false
+      - discovery.zen.minimum_master_nodes=2
+      - discovery.seed_hosts=elasticsearch-two,elasticsearch-three
+      #- discovery.zen.ping.unicast.hosts="elasticsearch-one","elasticsearch-two","lasticsearch-three"
+      - network.bind_host=0.0.0.0
+      # - xpack.license.self_generated.type=trial
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-three-data:/usr/share/elasticsearch/data
+    ports:
+      - 9202:9202
+    networks:
+      - elastic
+
+  kibana-one:
+    image: docker.elastic.co/kibana/kibana:7.7.0
+    container_name: kibana-one
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch-one:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch-one:9200
+    networks:
+      - elastic
+
+volumes:
+  elasticsearch-one-data:
+    driver: local
+  elasticsearch-two-data:
+    driver: local
+  elasticsearch-three-data:
+    driver: local
+    # driver_opts:
+    #   o: bind
+    #   type: none
+    #   device: /var/enc/db/elasticsearch1/data
+
+networks:
+  elastic:
+    driver: bridge

@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: elasticsearch
+    environment:
+      - node.name=vibhuvi-node
+      - discovery.type=single-node
+      - cluster.name=vibhuvi-es-data-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - vibhuviesdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.7.0
+    container_name: kibana
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      xpack.reporting.encryptionKey: "UkXp2s5v"
+      xpack.encryptedSavedObjects.encryptionKey: "*F-JaNdR"
+    networks:
+      - elastic
+networks:
+  elastic:
+    external:
+      name: elastic
+volumes:
+  vibhuviesdata:
+    driver: local

@@ -1,0 +1,22 @@
+version: '3.7'
+networks:
+  elastic:
+    external:
+      name: elastic
+services:
+  heartbeat:
+    image: docker.elastic.co/beats/heartbeat:7.7.0
+    container_name: heartbeat
+    command: --strict.perms=false -e
+    secrets:
+      - source: heartbeat.yml
+        target: /usr/share/heartbeat/heartbeat.yml
+    networks: ['elastic']
+    healthcheck:
+      test: heartbeat test config
+      interval: 30s
+      timeout: 15s
+      retries: 5
+secrets:
+  heartbeat.yml:
+    file: ./heartbeat.yml
