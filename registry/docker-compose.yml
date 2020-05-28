@@ -11,6 +11,14 @@ services:
       - registry-net
     depends_on:
        - registry
+  registry-web2:
+    image: pnymetapack/docker-registry-web
+    ports:
+      - 8081:8080
+    networks:
+      - registry-net
+    depends_on:
+       - registry
   registry:
     image: registry:2.4.1
     ports:
