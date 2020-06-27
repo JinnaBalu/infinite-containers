@@ -3,4 +3,4 @@ registry:
    name: localhost:5000
    readonly: false
    auth:
-     enabled: false
+     enabled: true

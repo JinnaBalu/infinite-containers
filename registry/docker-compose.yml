@@ -15,6 +15,9 @@ services:
     image: pnymetapack/docker-registry-web
     ports:
       - 8081:8080
+    volumes:
+       - ./conf/registry-web:/conf:ro
+       - ./db:/data
     networks:
       - registry-net
     depends_on:

@@ -1,0 +1,20 @@
+version:  '3'
+services:
+    datascience-notebook:
+        image: jupyter/base-notebook
+        volumes:
+            - ./jupyter_work:/home/docker_worker/work            
+        ports:
+            - 8888:8888
+        container_name: jupyter_notebook
+        command: "start-notebook.sh --NotebookApp.token='c105457ab8c9a7b16c8cd25972b34d2ce1067abf8ac1054c44d26' \
+        --NotebookApp.open_browser=False \
+        --NotebookApp.password=u'sha1:47181320c866:6b43078659452bb1fa45b9539e421a09755c4a42' \
+        --NotebookApp.ip='*'"
+        user: root
+        environment:
+          NB_USER: docker_worker
+          NB_UID: 1008
+          NB_GID: 1011
+          CHOWN_HOME: 'yes'
+          CHOWN_HOME_OPTS: -R
