@@ -1,0 +1,16 @@
+version: 3.8
+services:
+    jenkins:
+        image:
+        container_name: jenkins
+        volumes: ["jenkins_data:/var/jenkins_home"]
+        environment:
+        ports: ["8080:8080", "50000:50000"]
+volumes:
+    jenkins_data:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: $PWD/jenkins_home_data
+            

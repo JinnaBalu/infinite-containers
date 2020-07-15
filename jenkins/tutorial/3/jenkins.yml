@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+
+  main:
+    image: jinnabalu/jenkins:${TAG:-latest}
+    ports:
+      - 50000:50000
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"
+    networks:
+      - proxy
+    volumes:
+      - jm:/var/jenkins_home
+      - jmshare:/usr/share/jenkins/ref
+    deploy:
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.servicePath=/jenkins
+        - com.df.port=8080
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+
+networks:
+  proxy:
+    external: true
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
+
+volumes:
+  jm:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/ubuntu/jenkins/home/
+  jmshare:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/ubuntu/jenkins/share/    
