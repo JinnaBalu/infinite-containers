@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "jb.polyproxy"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "polyproxy",
+    "packageName": "jb.polyproxy",
+    "packageFolder": "jb/polyproxy",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MzJkZjIwOGU3MWM3YmE2YWQ3MzBhOGVjMmQ5NTJmZDE5NDFkMTRhZjc4ZmRmNDkzMTNkNzBlYmI5MmRiMmQxYmYyYzNiMmE4MzUxMjM2NGY3OTM3YTIyYTIzODhhNTUxNzUwYTgzNzBmYzMwOTNmZmY1MGUwNmJjNzY5NDMwMjg=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1595397894674,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
