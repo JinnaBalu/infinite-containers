@@ -14,7 +14,7 @@ output.elasticsearch:
   protocol: "http"
 
 setup.kibana:
-  host: "http://kibana:5601/monitoringkibana"
+  host: "http://kibana:5601"
   protocol: "http"
   ssl.enabled: false
 
@@ -27,6 +27,6 @@ metricbeat.modules:
     - index_summary
     - shard
   period: 20s
-  hosts: ["http://192.31.2.99:9200"]
+  hosts: ["http://192.168.0.8:9200"]
   # hosts: ["http://192.31.2.66:9200", "http://192.31.3.66:9200", "http://192.31.4.66:9200"]
   # xpack.enabled: true
