@@ -2,7 +2,7 @@ version: "3.7"
 services:
   elasticsearch:
     container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
     ports: ["9200:9200"]
     networks: ["monitoring"]
     environment:
@@ -27,7 +27,7 @@ services:
       retries: 5
   kibana:
     container_name: kibana
-    image: docker.elastic.co/kibana/kibana:7.7.0
+    image: docker.elastic.co/kibana/kibana:6.4.2
     ports: ["5601:5601"]
     networks: ["monitoring"]
     depends_on: ["elasticsearch"]
@@ -40,7 +40,7 @@ services:
       timeout: 10s
       retries: 5
   metricbeat:
-    image: docker.elastic.co/beats/metricbeat:7.7.0
+    image: docker.elastic.co/beats/metricbeat:6.4.2
     container_name: metricbeat
     depends_on: ["elasticsearch", "kibana"]
     volumes:
