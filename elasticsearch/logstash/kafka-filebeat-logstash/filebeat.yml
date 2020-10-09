@@ -1,0 +1,15 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:  ['/var/wisestep-staging-server-logs/*.log']
+    exclude_files: ["gc*.log"]
+    encoding: utf-8
+    multiline.pattern: '^\['  
+    multiline.negate: true
+    multiline.match: after
+    scan_frequency: 60s
+
+output.logstash:
+  hosts: ["127.0.0.1:5044"]
+tags: ["preprod"]
+name: preprod

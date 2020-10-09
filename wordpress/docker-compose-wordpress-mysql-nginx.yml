@@ -14,8 +14,8 @@ services:
       depends_on:
           - wordpress
   
-  mysql:
-      image: mariadb
+  mariadb:
+      image: mariadb:10.5.5
       deploy:
         restart_policy:
           condition: 'any'
@@ -41,4 +41,4 @@ services:
           - WORDPRESS_DB_HOST=mysql
           - WORDPRESS_DB_PASSWORD=balu123
       depends_on:
-          - mysql
+          - mariadb

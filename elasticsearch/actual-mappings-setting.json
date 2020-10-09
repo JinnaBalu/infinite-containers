@@ -1,0 +1,245 @@
+{
+    "massmailinglog": {
+        "aliases": {},
+        "mappings": {
+            "massmailinglog": {
+                "properties": {
+                    "bcc": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "bouncedEmailMessageCategory": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "bouncedOrComplaintRecordedOn": {
+                        "type": "date"
+                    },
+                    "bouncedReason": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "cc": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "clickedCount": {
+                        "type": "integer",
+                        "store": true
+                    },
+                    "complaints": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "consultants": {
+                        "type": "nested",
+                        "properties": {
+                            "email": {
+                                "type": "keyword"
+                            },
+                            "id": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "createdBy": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "createdOn": {
+                        "type": "date"
+                    },
+                    "customHeaders": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "emailingProvider": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "errors": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "fromEmail": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "id": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "isBounced": {
+                        "type": "boolean"
+                    },
+                    "isClicked": {
+                        "type": "boolean"
+                    },
+                    "isDelivered": {
+                        "type": "boolean"
+                    },
+                    "isFirstRecordInGroup": {
+                        "type": "boolean"
+                    },
+                    "isOpened": {
+                        "type": "boolean"
+                    },
+                    "isSent": {
+                        "type": "boolean"
+                    },
+                    "isUnsubscribed": {
+                        "type": "boolean"
+                    },
+                    "jobs": {
+                        "type": "nested",
+                        "properties": {
+                            "id": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "text"
+                            }
+                        }
+                    },
+                    "massMailType": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "massMailedCandidates": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "massMailedConsultants": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "massMailedJobs": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "massMailingGroupId": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "massMailingGroupName": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "message": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "messageId": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "modifiedOn": {
+                        "type": "date"
+                    },
+                    "openedCount": {
+                        "type": "integer",
+                        "store": true
+                    },
+                    "recruiterId": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "reportingMTA": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "subject": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "toEmail": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "transactionId": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "unsubscribedReason": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "urlOfClickedLink": {
+                        "type": "text",
+                        "store": true
+                    },
+                    "workspaceId": {
+                        "type": "keyword",
+                        "store": true
+                    },
+                    "workspaceName": {
+                        "type": "keyword",
+                        "store": true
+                    }
+                }
+            }
+        },
+        "settings": {
+            "index": {
+                "search": {
+                    "slowlog": {
+                        "level": "info",
+                        "threshold": {
+                            "fetch": {
+                                "warn": "1s",
+                                "trace": "200ms",
+                                "debug": "500ms",
+                                "info": "800ms"
+                            },
+                            "query": {
+                                "warn": "10s",
+                                "trace": "1s",
+                                "debug": "2s",
+                                "info": "5s"
+                            }
+                        }
+                    }
+                },
+                "number_of_shards": "5",
+                "provided_name": "massmailinglog",
+                "creation_date": "1573824938873",
+                "analysis": {
+                    "filter": {
+                        "autocomplete_filter": {
+                            "type": "edge_ngram",
+                            "min_gram": "1",
+                            "max_gram": "20"
+                        }
+                    },
+                    "analyzer": {
+                        "case_insensitive_analyzer": {
+                            "filter": [
+                                "lowercase"
+                            ],
+                            "tokenizer": "keyword"
+                        },
+                        "autocomplete_analyzer": {
+                            "filter": [
+                                "lowercase",
+                                "autocomplete_filter"
+                            ],
+                            "tokenizer": "standard"
+                        }
+                    }
+                },
+                "number_of_replicas": "1",
+                "uuid": "jHKyqRbIRsW7fds3WoEe0Q",
+                "version": {
+                    "created": "6040299"
+                }
+            }
+        }
+    }
+}

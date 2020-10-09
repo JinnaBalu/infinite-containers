@@ -1,0 +1,232 @@
+{
+    "mappings": {
+        "massmailinglog": {
+            "properties": {
+                "id": {
+                    "type": "keyword"
+                },
+                "recruiterId": {
+                    "type": "keyword"
+                },
+                "workspaceId": {
+                    "type": "keyword"
+                },
+                "massMailedJobs": {
+                    "type": "keyword"
+                },
+                "massMailedCandidates": {
+                    "type": "keyword"
+                },
+                "fromEmail": {
+                    "type": "keyword"
+                },
+                "toEmail": {
+                    "type": "keyword"
+                },
+                "cc": {
+                    "type": "keyword"
+                },
+                "bcc": {
+                    "type": "keyword"
+                },
+                "subject": {
+                    "type": "text"
+                },
+                "message": {
+                    "type": "text"
+                },
+                "createdBy": {
+                    "type": "keyword"
+                },
+                "createdOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "massMailType": {
+                    "type": "keyword"
+                },
+                "messageId": {
+                    "type": "keyword"
+                },
+                "transactionId": {
+                    "type": "keyword"
+                },
+                "massMailingGroupId": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "massMailingGroupName": {
+                    "type": "keyword"
+                },
+                "isFirstRecordInGroup": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "keyword"
+                },
+                "isSent": {
+                    "type": "boolean"
+                },
+                "isDelivered": {
+                    "type": "boolean"
+                },
+                "isOpened": {
+                    "type": "boolean"
+                },
+                "openedCount": {
+                    "type": "integer"
+                },
+                "isClicked": {
+                    "type": "boolean"
+                },
+                "clickedCount": {
+                    "type": "integer"
+                },
+                "isUnsubscribed": {
+                    "type": "boolean"
+                },
+                "unsubscribedReason": {
+                    "type": "text"
+                },
+                "isBounced": {
+                    "type": "boolean"
+                },
+                "bouncedReason": {
+                    "type": "text"
+                },
+                "bouncedEmailMessageCategory": {
+                    "type": "keyword"
+                },
+                "isComplained": {
+                    "type": "boolean"
+                },
+                "complaints": {
+                    "type": "keyword"
+                },
+                "errors": {
+                    "type": "text"
+                },
+                "urlOfClickedLink": {
+                    "type": "keyword"
+                },
+                "customHeaders": {
+                    "type": "keyword"
+                },
+                "massMailedConsultants": {
+                    "type": "keyword"
+                },
+                "workspaceName": {
+                    "type": "keyword"
+                },
+                "jobs": {
+                    "type": "nested",
+                    "properties": {
+                        "id": {
+                            "type": "keyword"
+                        },
+                        "title": {
+                            "type": "text"
+                        }
+                    }
+                },
+                "consultants": {
+                    "type": "nested",
+                    "properties": {
+                        "id": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "text"
+                        },
+                        "email": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "modifiedOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "bouncedOrComplaintRecordedOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "reportingMTA": {
+                    "type": "text"
+                },
+                "emailingProvider": {
+                    "type": "keyword"
+                },
+                "sentOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "deliveredOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "openedOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "clickedOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "unsubscribedOn": {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                }
+            }
+        }
+    },
+    "settings": {
+        "index": {
+            "search": {
+                "slowlog": {
+                    "level": "info",
+                    "threshold": {
+                        "fetch": {
+                            "warn": "1s",
+                            "trace": "200ms",
+                            "debug": "500ms",
+                            "info": "800ms"
+                        },
+                        "query": {
+                            "warn": "10s",
+                            "trace": "1s",
+                            "debug": "2s",
+                            "info": "5s"
+                        }
+                    }
+                }
+            },
+            "number_of_shards": "5",
+            "analysis": {
+                "filter": {
+                    "autocomplete_filter": {
+                        "type": "edge_ngram",
+                        "min_gram": "1",
+                        "max_gram": "20"
+                    }
+                },
+                "analyzer": {
+                    "case_insensitive_analyzer": {
+                        "filter": [
+                            "lowercase"
+                        ],
+                        "tokenizer": "keyword"
+                    },
+                    "autocomplete_analyzer": {
+                        "filter": [
+                            "lowercase",
+                            "autocomplete_filter"
+                        ],
+                        "tokenizer": "standard"
+                    }
+                }
+            },
+            "number_of_replicas": "0"
+        }
+    }
+}
