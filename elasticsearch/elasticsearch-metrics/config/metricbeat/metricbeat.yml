@@ -14,7 +14,7 @@ output.elasticsearch:
   protocol: "http"
 
 setup.kibana:
-  host: "http://kibana:5601"
+  host: "http://kibana:5601/monitoringkibana"
   protocol: "http"
   ssl.enabled: false
 
