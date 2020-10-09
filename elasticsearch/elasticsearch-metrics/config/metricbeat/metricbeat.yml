@@ -9,9 +9,10 @@ setup.template.settings:
 xpack.monitoring.enabled: true
 setup.dashboards.enabled: true
 
-output.elasticsearch:
-  hosts: ['elasticsearch:9200']
-  protocol: "http"
+xpack.monitoring.exporters:
+  id1:
+    type: http
+    host: ["elasticsearch:9200"]
 
 setup.kibana:
   host: "http://kibana:5601"
