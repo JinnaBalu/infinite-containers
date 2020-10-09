@@ -12,7 +12,7 @@ services:
       transport.host: 0.0.0.0
       discovery.zen.minimum_master_nodes: 1
       discovery.type: single-node
-      ES_JAVA_OPTS: -Xms3g -Xmx3g
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
       xpack.license.self_generated.type: basic
       xpack.monitoring.history.duration: 7d
       xpack.monitoring.collection.enabled: "true"
