@@ -1,48 +1,8 @@
 version: "3.7"
 services:
-  elasticsearch:
-    container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
-    ports: ["9200:9200"]
-    networks: ["monitoring"]
-    environment:
-      cluster.name: "monitoring-cluster"
-      node.name: "es-node-one"
-      network.host: 0.0.0.0
-      transport.host: 0.0.0.0
-      discovery.zen.minimum_master_nodes: 1
-      discovery.type: single-node
-      ES_JAVA_OPTS: -Xms3g -Xmx3g
-      xpack.license.self_generated.type: basic
-      xpack.monitoring.history.duration: 7d
-      xpack.monitoring.collection.enabled: "true"
-      xpack.monitoring.collection.interval: 60s
-      script.painless.regex.enabled: "true"
-    volumes:
-      - "es_data:/usr/share/elasticsearch/data"
-    healthcheck:
-      test: curl -s https://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
-      interval: 30s
-      timeout: 10s
-      retries: 5
-  kibana:
-    container_name: kibana
-    image: docker.elastic.co/kibana/kibana:7.7.0
-    ports: ["5601:5601"]
-    networks: ["monitoring"]
-    depends_on: ["elasticsearch"]
-    secrets:
-      - source: kibana.yml
-        target: /usr/share/kibana/config/kibana.yml
-    healthcheck:
-      test: curl -s https://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
-      interval: 30s
-      timeout: 10s
-      retries: 5
   metricbeat:
     image: docker.elastic.co/beats/metricbeat:7.7.0
     container_name: metricbeat
-    depends_on: ["elasticsearch", "kibana"]
     volumes:
       - ./config/metricbeat/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
     command: '-strict.perms=false'
@@ -56,13 +16,3 @@ networks:
   monitoring:
     external:
       name: monitoring
-secrets:
-  kibana.yml:
-    file: ./config/kibana/kibana.yml
-volumes:
-  es_data:
-  #   driver: local
-  #   driver_opts:
-  #     o: bind
-  #     type: none
-  #     device: /var/db/wisestep/monitoring-elasticsearch/data
