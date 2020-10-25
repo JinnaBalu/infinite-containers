@@ -27,7 +27,7 @@ services:
       retries: 5
   kibana:
     container_name: kibana
-    image: docker.elastic.co/kibana/kibana:6.4.2
+    image: docker.elastic.co/kibana/kibana:6.8.3
     ports: ["5601:5601"]
     networks: ["monitoring"]
     depends_on: ["elasticsearch"]
@@ -40,7 +40,7 @@ services:
       timeout: 10s
       retries: 5
   metricbeat:
-    image: docker.elastic.co/beats/metricbeat:6.4.2
+    image: docker.elastic.co/beats/metricbeat:6.8.3
     container_name: metricbeat
     depends_on: ["elasticsearch", "kibana"]
     volumes:

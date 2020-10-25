@@ -1,0 +1,31 @@
+cat <<EOF > docker-compose.yml 
+
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    container_name: elasticsearch
+    environment:
+      - node.name=ws-es-node
+      - discovery.seed_hosts=es02
+      - cluster.initial_master_nodes=elasticsearch
+      - cluster.name=ws-es-data-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - wsesdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+volumes:
+  wsesdata:
+    driver: local
+
+networks:
+  esnet:
+EOF

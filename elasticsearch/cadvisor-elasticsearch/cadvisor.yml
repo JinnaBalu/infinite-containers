@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  cadvisor:
+    container_name: cadvisor
+    image: gcr.io/google-containers/cadvisor
+    ports:
+      - 8080:8080
+    privileged: true
+    command: -storage_driver="elasticsearch" -alsologtostderr=true -storage_driver_es_host="http://elasticsearch:9200"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro

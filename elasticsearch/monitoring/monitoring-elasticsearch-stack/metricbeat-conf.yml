@@ -1,0 +1,30 @@
+metricbeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+
+metricbeat.modules:
+- module: elasticsearch
+  metricsets: ["node", "node_stats", "index", "index_recovery", "index_summary", "shard"]
+  period: 10s
+  hosts: ["http://ip172-18-0-26-bu2k7fpqckh000dspmd0-9200.direct.labs.play-with-docker.com"]
+processors:
+- add_cloud_metadata: ~
+- add_docker_metadata: ~
+- add_locale:
+    format: offset
+- add_host_metadata:
+    netinfo.enabled: true
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+
+setup.dashboards:
+  enabled: true
+
+setup.kibana:
+  host: "kibana:5601"
+
+xpack.monitoring:
+  enabled: true
+  elasticsearch:

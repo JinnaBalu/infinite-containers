@@ -1,0 +1,349 @@
+{
+    "mappings": {
+        "workspace": {
+            "properties": {
+                "allowJobAdminsToChangeSettings": {
+                    "type": "boolean"
+                },
+                "allowMultiLoginOfJobboards": {
+                    "type": "boolean"
+                },
+                "companyURL": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "createdBy": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "createdOn": {
+                    "type": "date"
+                },
+                "domains": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "enableAutoJoin": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "text"
+                },
+                "jobAttributesSetting": {
+                    "type": "text"
+                },
+                "jobboardSessionSettings": {
+                    "type": "nested",
+                    "properties": {
+                        "active": {
+                            "type": "boolean"
+                        },
+                        "jobBoard": {
+                            "type": "keyword"
+                        },
+                        "maxSessions": {
+                            "type": "long"
+                        },
+                        "workspaceId": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "maxSessionsPerJobBoard": {
+                    "type": "long"
+                },
+                "maxUsers": {
+                    "type": "long"
+                },
+                "modifiedBy": {
+                    "type": "text"
+                },
+                "modifiedOn": {
+                    "type": "date",
+                    "store": true
+                },
+                "name": {
+                    "type": "text",
+                    "fields": {
+                        "autocomplete": {
+                            "type": "text",
+                            "analyzer": "autocomplete_analyzer",
+                            "search_analyzer": "standard"
+                        },
+                        "verbatim": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "notes": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "ownerId": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "ownerName": {
+                    "type": "text",
+                    "fields": {
+                        "verbatim": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "phoneNumber": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "planEndDate": {
+                    "type": "date"
+                },
+                "planType": {
+                    "type": "text",
+                    "fields": {
+                        "verbatim": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "roles": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "status": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "tags": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "teams": {
+                    "type": "nested",
+                    "properties": {
+                        "candidateStatusUpdateNotificationTo": {
+                            "type": "text"
+                        },
+                        "candidateSubmissionNotificationTo": {
+                            "type": "text"
+                        },
+                        "disableCandidateStatusUpdateNotificationTo": {
+                            "type": "text"
+                        },
+                        "disableCandidateSubmissionNotificationTo": {
+                            "type": "text"
+                        },
+                        "disableJobClosedNotificationTo": {
+                            "type": "text"
+                        },
+                        "disableJobInsightUpdateNotificationTo": {
+                            "type": "text"
+                        },
+                        "disableJobShareNotificationTo": {
+                            "type": "text"
+                        },
+                        "id": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "jobClosedNotificationTo": {
+                            "type": "text"
+                        },
+                        "jobInsightUpdateNotificationTo": {
+                            "type": "text"
+                        },
+                        "jobPostedNotificationTo": {
+                            "type": "text"
+                        },
+                        "jobShareNotificationTo": {
+                            "type": "text"
+                        },
+                        "name": {
+                            "type": "text"
+                        },
+                        "ownerEmail": {
+                            "type": "text"
+                        },
+                        "ownerId": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "type": {
+                            "type": "text"
+                        },
+                        "workspaceId": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "workspaceName": {
+                            "type": "text",
+                            "fields": {
+                                "verbatim": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "workspaceOwnerId": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "workspaceOwnerName": {
+                            "type": "text",
+                            "fields": {
+                                "verbatim": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "teamsCount": {
+                    "type": "long"
+                },
+                "usersCount": {
+                    "type": "long"
+                },
+                "visibility": {
+                    "type": "keyword",
+                    "store": true
+                },
+                "workspaceNotes": {
+                    "type": "nested",
+                    "properties": {
+                        "email": {
+                            "type": "keyword"
+                        },
+                        "id": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "text"
+                        },
+                        "notes": {
+                            "type": "text"
+                        }
+                    }
+                },
+                "workspaceUsers": {
+                    "type": "nested",
+                    "properties": {
+                        "accepted": {
+                            "type": "boolean"
+                        },
+                        "barred": {
+                            "type": "boolean"
+                        },
+                        "id": {
+                            "type": "text"
+                        },
+                        "invitationKey": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "invited": {
+                            "type": "boolean"
+                        },
+                        "owns": {
+                            "type": "boolean"
+                        },
+                        "requested": {
+                            "type": "boolean"
+                        },
+                        "requestedOn": {
+                            "type": "date",
+                            "store": true
+                        },
+                        "roles": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "userId": {
+                            "type": "keyword",
+                            "store": true
+                        },
+                        "userName": {
+                            "type": "text",
+                            "fields": {
+                                "verbatim": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "workspaceId": {
+                            "type": "keyword",
+                            "store": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "settings": {
+        "index": {
+            "search": {
+                "slowlog": {
+                    "level": "info",
+                    "threshold": {
+                        "fetch": {
+                            "warn": "1s",
+                            "trace": "200ms",
+                            "debug": "500ms",
+                            "info": "800ms"
+                        },
+                        "query": {
+                            "warn": "10s",
+                            "trace": "1s",
+                            "debug": "2s",
+                            "info": "5s"
+                        }
+                    }
+                }
+            },
+            "analysis": {
+                "filter": {
+                    "autocomplete_filter": {
+                        "type": "edge_ngram",
+                        "min_gram": "1",
+                        "max_gram": "20"
+                    }
+                },
+                "analyzer": {
+                    "case_insensitive_analyzer": {
+                        "filter": [
+                            "lowercase"
+                        ],
+                        "tokenizer": "keyword"
+                    },
+                    "autocomplete_analyzer": {
+                        "filter": [
+                            "lowercase",
+                            "autocomplete_filter"
+                        ],
+                        "tokenizer": "standard"
+                    }
+                }
+            },
+            "refresh_interval": "1s",
+            "number_of_shards": "5",
+            "store": {
+                "type": "fs"
+            },
+            "number_of_replicas": "1"
+        }
+    }
+}

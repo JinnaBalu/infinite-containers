@@ -1,3 +1,4 @@
+
 # IMPORT 
 
 Import schema (.cql file)
@@ -48,7 +49,7 @@ cqlsh -e "DESC SCHEMA" > db_schema.cql
 Docker compose files with volume of db scripts mounted to docker-entrypoint-initdb.d
 
 ```bash
-version: '2'
+version: '3'
 services:
     cassandra:
         image: cassandra:3.9
