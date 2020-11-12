@@ -40,5 +40,6 @@ We can implement above steps with one Simulation API all in one go as follows
 ```
 curl -H 'Content-Type: application/json' -XPOST http://localhost:9200/_ingest/pipeline/_simulate?pretty=true -d @simulate-book.json
 
-curl -s -XGET http://localhost:9200/book/data/_search?pretty=true
 ```
+
+Check with the response document, we'll see the description field is removed
