@@ -1,0 +1,23 @@
+{
+  "pipeline": {
+    "description": "Removes a specific field before indexing",
+    "processors": [
+      {
+        "remove": {
+          "field": "description"
+        }
+      }
+    ]
+  },
+  "docs": [
+    {
+      "_index": "simple-index",
+      "_type": "data",
+      "_source": {
+        "type": "book",
+        "title": "Charaka Samhitha",
+        "description": "Origin of Ayurvedha"
+      }
+    }
+  ]
+}

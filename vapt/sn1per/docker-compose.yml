@@ -1,0 +1,5 @@
+version: "3"
+services:
+  sn1per:
+    image: xerosecurity/sn1per
+    container_name: sn1per
