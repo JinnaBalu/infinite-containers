@@ -1,3 +1,11 @@
+# Ingest Node Lab
+
+Run the elasticsearch and Kibana with the following command
+
+```bash
+chmod +x init.sh
+```
+
 ## Ingest Node Pipeline
 
 ### Difference Between Indexing and Ingest Indexing
@@ -41,5 +49,4 @@ We can implement above steps with one Simulation API all in one go as follows
 curl -H 'Content-Type: application/json' -XPOST http://localhost:9200/_ingest/pipeline/_simulate?pretty=true -d @simulate-book.json
 
 ```
-
 Check with the response document, we'll see the description field is removed
