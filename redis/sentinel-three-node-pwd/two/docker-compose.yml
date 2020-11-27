@@ -6,6 +6,8 @@ services:
     container_name: redis_replica_one
     command: ["redis-server", "--appendonly", "yes", "--bind", "0.0.0.0"]
     ports: ["6379:6379"]
+    volumes:
+     - redisdata:/data
     networks:
       vibhuvi_network_redis:
   sentinel-two:
@@ -19,4 +21,7 @@ services:
       vibhuvi_network_redis:
 networks:
   vibhuvi_network_redis:
+volumes:
+  redisdata:
+    driver: "local"
 EOF

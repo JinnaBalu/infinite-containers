@@ -3,8 +3,8 @@ services:
   redis:
     image: redis:6
     container_name: redis_master
-    expose:
-      - 6379
+    command: ["redis-server", "--appendonly", "yes", "--bind", "0.0.0.0"]
+    ports: ["6379:6379"]
     networks:
       vibhuvi_network_redis:
   sentinel:
@@ -12,25 +12,11 @@ services:
     container_name: sentinel
     user: root
     privileged: true
-    expose:
-      - 26379
+    ports: ["26379:6379"]
     volumes:
       - ./sentinel.conf:/etc/sentinel.conf
     command: redis-server /etc/sentinel.conf --sentinel
-    # command: redis-server --slaveof redis-master 6379
-    # environment: 
-    #   - SENTINEL_DOWN_AFTER=5000
-    #   - SENTINEL_FAILOVER=5000
-    # links:
-    #   - master:redis-master
-    #   - slave
     networks:
       vibhuvi_network_redis:
-        # ipv4_address: 172.22.1.11
 networks:
   vibhuvi_network_redis:
-    # driver: bridge
-    # ipam:
-    #   driver: default
-    #   config:
-    #     - subnet: 172.22.1.0/24
