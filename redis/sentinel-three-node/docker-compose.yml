@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+  redis-one:
+    image: redis:6
+    container_name: redis_master
+    expose:
+      - 6379
+    networks:
+      vibhuvi_network_redis:
+  sentinel-one:
+    image: redis:6
+    container_name: sentinel_one
+    expose:
+      - 26379
+    volumes:
+      - ./sentinel-one.conf:/etc/sentinel.conf
+    command: redis-server /etc/sentinel.conf --sentinel
+    networks:
+      vibhuvi_network_redis:
+  redis-two:
+    image: redis:6
+    container_name: redis_replica_one
+    expose:
+      - 6379
+    networks:
+      vibhuvi_network_redis:
+  sentinel-two:
+    image: redis:6
+    container_name: sentinel_two
+    expose:
+      - 26379
+    volumes:
+      - ./sentinel-two.conf:/etc/sentinel.conf
+    command: redis-server /etc/sentinel.conf --sentinel
+    networks:
+      vibhuvi_network_redis:
+  redis-three:
+    image: redis:6
+    container_name: redis_replica_two
+    expose:
+      - 6379
+    networks:
+      vibhuvi_network_redis:
+  sentinel-three:
+    image: redis:6
+    container_name: sentinel_three
+    expose:
+      - 26379
+    volumes:
+      - ./sentinel-three.conf:/etc/sentinel.conf
+    command: redis-server /etc/sentinel.conf --sentinel
+    networks:
+      vibhuvi_network_redis:
+networks:
+  vibhuvi_network_redis:

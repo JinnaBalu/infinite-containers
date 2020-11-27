@@ -1,0 +1,13 @@
+version: "3"
+services:
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOST=UPDATE_IP
+      - REDIS_DB=1
+      # - URL_PREFIX=/rediscommander
+    ports:
+      - "9090:8081"

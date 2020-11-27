@@ -19,7 +19,7 @@ curl -XPOST http://localhost:9200/book/data?pretty -H "Content-Type: application
 Check with the field description, without pipeline
 
 ```
-curl -s -XGET http://localhost:9200/analytics_job/_search?pretty=true
+curl -s -XGET http://localhost:9200/book/_search?pretty=true
 ```
 - Create Ingest Pipeline
 ```

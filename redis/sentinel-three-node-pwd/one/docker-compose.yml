@@ -1,0 +1,24 @@
+cat <<EOF >> docker-compose.yml
+version: '3.7'
+services:
+  redis-one:
+    image: redis:6
+    container_name: redis_master
+    command: ["redis-server", "--appendonly", "yes", "--bind", "0.0.0.0"]
+    ports: ["6379:6379"]
+    environment: 
+      BIND: "192.168.0.28"
+    networks:
+      vibhuvi_network_redis:
+  sentinel-one:
+    image: redis:6
+    container_name: sentinel_one
+    ports: ["26379:6379"]
+    volumes:
+      - ./sentinel-one.conf:/etc/sentinel.conf
+    command: redis-server /etc/sentinel.conf --sentinel
+    networks:
+      vibhuvi_network_redis:
+networks:
+  vibhuvi_network_redis:
+EOF
