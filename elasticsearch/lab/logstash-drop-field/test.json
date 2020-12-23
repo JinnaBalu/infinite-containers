@@ -1,0 +1,22 @@
+[
+    "email",
+    "alternateEmails",
+    "alternateEmails.keyword",
+    "candidateResume.email",
+    "candidateResume.email.keyword",
+    "candidateTasks.candidateEmail",
+    "candidateTasks.candidateEmail.keyword",
+    "commPreferenceEmail",
+    "jobAccountManagerEmail",
+    "jobAccountManagerEmail.keyword",
+    "jobClientRecruiterEmail",
+    "jobClientRecruiterEmail.keyword",
+    "jobPostedByRecruiterEmail",
+    "jobPostedByRecruiterEmail.keyword",
+    "jobPostedByTeam.ownerEmail",
+    "jobPostedByTeam.ownerEmail.keyword",
+    "jobWorkAssignment.team.ownerEmail",
+    "jobWorkAssignment.team.ownerEmail.keyword",
+    "team.ownerEmail",
+    "team.ownerEmail.keyword"
+]

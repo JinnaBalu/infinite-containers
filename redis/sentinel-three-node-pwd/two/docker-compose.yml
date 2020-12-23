@@ -13,7 +13,7 @@ services:
   sentinel-two:
     image: redis:6
     container_name: sentinel_two
-    ports: ["26379:6379"]
+    ports: ["26379:26379"]
     volumes:
       - ./sentinel-two.conf:/etc/sentinel.conf
     command: redis-server /etc/sentinel.conf --sentinel

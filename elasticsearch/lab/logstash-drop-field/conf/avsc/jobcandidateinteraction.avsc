@@ -1,0 +1,1779 @@
+{
+    "type" : "record",
+    "name" : "JobCandidateInteraction",
+    "namespace" : "com.wisestep.hiring.domain.avrogenerated",
+    "fields" : [ {
+      "name" : "id",
+      "type" : [ "string", "null" ]
+    }, {
+      "name" : "candidateId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "recruiterJobMappingId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "recruiterId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "recruiterName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "recruiterCompanyName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "applicationStage",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "applicationState",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "mappedJobTitle",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "mappedJobLocation",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobLocations",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "Location",
+          "fields" : [ {
+            "name" : "id",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "area",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "city",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "state",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "stateCode",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "country",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "countryCode",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "zipCode",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "lat",
+            "type" : [ "double", "null" ]
+          }, {
+            "name" : "lon",
+            "type" : [ "double", "null" ]
+          }, {
+            "name" : "continent",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "continentCode",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "point",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "source",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "text",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "name",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "email",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "alternateEmails",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "phoneNumber",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "alternatePhoneNumbers",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "skills",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "educationQualifications",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "institutionsAttended",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "certifications",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "currentJobTitle",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "currentLocation",
+      "type" : [ "Location", "null" ],
+      "default" : {
+        "id" : "",
+        "area" : "",
+        "city" : "",
+        "state" : "",
+        "stateCode" : "",
+        "country" : "",
+        "countryCode" : "",
+        "zipCode" : "",
+        "lat" : 0,
+        "lon" : 0,
+        "continent" : "",
+        "continentCode" : "",
+        "point" : "",
+        "text" : "",
+        "source" : ""
+      }
+    }, {
+      "name" : "currentEmployer",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "currentJobType",
+      "type" : [ {
+        "type" : "enum",
+        "name" : "JobType",
+        "symbols" : [ "Permanent", "Contract", "Temporary", "Internship", "ContractToHireW2", "ContractW2", "ContractIndependent", "ContractToHireIndependent", "ContractCorpToCorp", "ContractToHireCorpToCorp", "PartTime", "Freelance", "None", "PermanentAndContract" ]
+      }, "null" ],
+      "default" : "None"
+    }, {
+      "name" : "previousJobTitles",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "previousEmployers",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "totalYearsExperience",
+      "type" : [ "double", "null" ],
+      "default" : 0
+    }, {
+      "name" : "totalMonthsExperience",
+      "type" : [ "double", "null" ],
+      "default" : 0
+    }, {
+      "name" : "relevantYearsExperience",
+      "type" : [ "double", "null" ],
+      "default" : 0
+    }, {
+      "name" : "relevantMonthsExperience",
+      "type" : [ "double", "null" ],
+      "default" : 0
+    }, {
+      "name" : "noticePeriod",
+      "type" : [ {
+        "type" : "enum",
+        "name" : "NoticePeriod",
+        "symbols" : [ "Immediate", "Within_15_Days", "Within_1_Month", "Within_2_Months", "Within_3_Months", "Within_4_Months", "None" ]
+      }, "null" ],
+      "default" : "None"
+    }, {
+      "name" : "noticePeriodInDays",
+      "type" : [ "int", "null" ],
+      "default" : 0
+    }, {
+      "name" : "reasonForNewJob",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "assessment",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "currentSalaryCurrency",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "currentSalary",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "currentSalaryTimeSpan",
+      "type" : [ {
+        "type" : "enum",
+        "name" : "SalaryTimeSpan",
+        "symbols" : [ "PerAnnum", "PerMonth", "PerDay", "PerHour", "None" ]
+      }, "null" ],
+      "default" : "None"
+    }, {
+      "name" : "otherCurrentAllowances",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "expectedSalaryCurrency",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "expectedBaseSalary",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "expectedBaseSalaryTimeSpan",
+      "type" : [ "SalaryTimeSpan", "null" ],
+      "default" : "None"
+    }, {
+      "name" : "otherExpectedAllowances",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "willingToRelocate",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "familyWillingToRelocate",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "relocationPreference",
+      "type" : [ {
+        "type" : "enum",
+        "name" : "RelocationPreferenceType",
+        "symbols" : [ "NoRelocation", "WithinState", "WithinCountry", "AnyWhere", "None" ]
+      }, "null" ],
+      "default" : "None"
+    }, {
+      "name" : "preferredLocations",
+      "type" : [ {
+        "type" : "array",
+        "items" : "Location"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "jobIncludesTravel",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "willingToTravel",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "interviewingWithOthers",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "otherInterviewStage",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "alreadyApplied",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "resumeFileOriginalName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "resumeLocation",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "candidateResume",
+      "type" : [ {
+        "type" : "record",
+        "name" : "CandidateResume",
+        "fields" : [ {
+          "name" : "id",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "candidateMappingId",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "content",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "email",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "phone",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "gitHubLink",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "linkedInLink",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "pinCode",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "resumeFileOriginalName",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "resumeLocation",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "resumeUploadedOn",
+          "type" : [ "long", "null" ],
+          "default" : 0,
+          "logicalType" : "timestamp-millis"
+        }, {
+          "name" : "htmlContent",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        } ]
+      }, "null" ],
+      "default" : {
+        "id" : "",
+        "candidateMappingId" : "",
+        "content" : "",
+        "email" : "",
+        "phone" : "",
+        "gitHubLink" : "",
+        "linkedInLink" : "",
+        "pinCode" : "",
+        "resumeFileOriginalName" : "",
+        "resumeLocation" : "",
+        "resumeUploadedOn" : 0,
+        "htmlContent" : ""
+      }
+    }, {
+      "name" : "resumeUploadedOn",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "otherDocuments",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "JobCandidateDocument",
+          "fields" : [ {
+            "name" : "originalName",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "tag",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "documentLocation",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "uploadedOn",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "rtrFileOriginalName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "rtrFileLocation",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "rtrFileUploadedOn",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "rtrConsent",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "nationality",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "workAuthorization",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "visaStatus",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "visaValidity",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "candidateNotes",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "Notes",
+          "fields" : [ {
+            "name" : "notes",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "createdBy",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "createdAt",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "customNote",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "sendMessage",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "showContact",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "submittedOn",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "createdBy",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "createdOn",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "modifiedBy",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "modifiedOn",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "createdWith",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "messengers",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "Messenger",
+          "fields" : [ {
+            "name" : "messengerId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "type",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "linkedInURL",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "currentJobTravelType",
+      "type" : [ {
+        "type" : "enum",
+        "name" : "TravelType",
+        "symbols" : [ "TRAVEL_0_25", "TRAVEL_50", "TRAVEL_75", "TRAVEL_100", "None" ]
+      }, "null" ],
+      "default" : "None"
+    }, {
+      "name" : "willingToTravelType",
+      "type" : [ "TravelType", "null" ],
+      "default" : "None"
+    }, {
+      "name" : "jobCode",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "clientJobCode",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobType",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobAccountManagerEmail",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobClientRecruiterEmail",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobAccountManagerName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobClientRecruiterName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobTags",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "jobSkills",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "jobPostingDate",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "jobSalaryCurrency",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobMinimumSalary",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobMaximumSalary",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobSalaryTimeSpan",
+      "type" : [ "SalaryTimeSpan", "null" ],
+      "default" : "None"
+    }, {
+      "name" : "jobPostedByTeam",
+      "type" : [ {
+        "type" : "record",
+        "name" : "Team",
+        "fields" : [ {
+          "name" : "id",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "ownerId",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "name",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "ownerEmail",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "type",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "jobPostedNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobShareNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobClosedNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobInsightUpdateNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "candidateSubmissionNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "candidateStatusUpdateNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "disableJobPostedNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "disableJobShareNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "disableJobClosedNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "disableJobInsightUpdateNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "disableCandidateSubmissionNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "disableCandidateStatusUpdateNotificationTo",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "workspaceId",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "workspaceName",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        } ]
+      }, "null" ],
+      "default" : {
+        "id" : "",
+        "ownerId" : "",
+        "name" : "",
+        "ownerEmail" : "",
+        "type" : ""
+      }
+    }, {
+      "name" : "turnAroundTime",
+      "type" : [ {
+        "type" : "record",
+        "name" : "TurnAroundTime",
+        "fields" : [ {
+          "name" : "years",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "months",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "days",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "hours",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "minutes",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "seconds",
+          "type" : [ "string", "null" ]
+        }, {
+          "name" : "analyticalTime",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        } ]
+      }, "null" ],
+      "default" : {
+        "years" : "",
+        "months" : "",
+        "days" : "",
+        "hours" : "",
+        "minutes" : "",
+        "seconds" : "",
+        "analyticalTime" : ""
+      }
+    }, {
+      "name" : "jobPostedByRecruiterName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobPostedByRecruiterEmail",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "jobWorkAssignment",
+      "type" : [ {
+        "type" : "record",
+        "name" : "WorkAssignment",
+        "fields" : [ {
+          "name" : "id",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobId",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobTitle",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobLocation",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "recruiterName",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "jobCode",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "isAccepted",
+          "type" : [ "boolean", "null" ],
+          "default" : false
+        }, {
+          "name" : "clientJobCode",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "companyName",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "recruiterId",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "isClosed",
+          "type" : [ "boolean", "null" ],
+          "default" : false
+        }, {
+          "name" : "createdBy",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "createdOn",
+          "type" : [ "long", "null" ],
+          "default" : 0,
+          "logicalType" : "timestamp-millis"
+        }, {
+          "name" : "modifiedBy",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "modifiedOn",
+          "type" : [ "long", "null" ],
+          "default" : 0,
+          "logicalType" : "timestamp-millis"
+        }, {
+          "name" : "assignedBy",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "team",
+          "type" : [ "Team", "null" ],
+          "default" : {
+            "id" : "",
+            "ownerId" : "",
+            "name" : "",
+            "ownerEmail" : "",
+            "type" : ""
+          }
+        }, {
+          "name" : "eventType",
+          "type" : [ {
+            "type" : "enum",
+            "name" : "AssignmentEvents",
+            "symbols" : [ "CREATED", "UPDATED", "ACCEPTED", "CLOSED", "RELOCATED" ]
+          }, "null" ],
+          "default" : "UPDATED"
+        }, {
+          "name" : "workspaceId",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "workspaceName",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        } ]
+      }, "null" ],
+      "default" : {
+        "id" : "",
+        "recruiterId" : "",
+        "recruiterName" : "",
+        "createdBy" : "",
+        "createdOn" : 0,
+        "modifiedBy" : "",
+        "modifiedOn" : 0,
+        "assignedBy" : ""
+      }
+    }, {
+      "name" : "companyName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "team",
+      "type" : [ "Team", "null" ],
+      "default" : {
+        "id" : "",
+        "ownerId" : "",
+        "name" : "",
+        "ownerEmail" : "",
+        "type" : ""
+      }
+    }, {
+      "name" : "isJobCandidateMapping",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "isCreatedWhenCandidateMapped",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "candidateMappingId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "candidateInteractionResult",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "contactActions",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "contactActionsObjs",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "ContactAction",
+          "fields" : [ {
+            "name" : "result",
+            "type" : [ {
+              "type" : "record",
+              "name" : "CandidateInteractionResult",
+              "fields" : [ {
+                "name" : "result",
+                "type" : [ {
+                  "type" : "array",
+                  "items" : "string"
+                }, "null" ],
+                "default" : [ ]
+              }, {
+                "name" : "notes",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "createdOn",
+                "type" : [ "long", "null" ],
+                "default" : 0,
+                "logicalType" : "timestamp-millis"
+              }, {
+                "name" : "createdBy",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "createdByEmail",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              } ]
+            }, "null" ],
+            "default" : {
+              "result" : [ ],
+              "notes" : "",
+              "createdOn" : 0,
+              "createdBy" : "",
+              "createdByEmail" : ""
+            }
+          }, {
+            "name" : "notes",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "actions",
+            "type" : [ {
+              "type" : "array",
+              "items" : "string"
+            }, "null" ],
+            "default" : ""
+          }, {
+            "name" : "createdOn",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          }, {
+            "name" : "createdBy",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "createdByEmail",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "actionId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "stageAndStateActions",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "StageAndStateAction",
+          "fields" : [ {
+            "name" : "id",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "stage",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "state",
+            "type" : [ "string", "null" ]
+          }, {
+            "name" : "updatedOn",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          }, {
+            "name" : "updatedBy",
+            "type" : [ "string", "null" ]
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "candidateTasks",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "CandidateTask",
+          "fields" : [ {
+            "name" : "id",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "interactionId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "actionId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "name",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "description",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "recruiterName",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "recruiterJobMappingId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "candidateEmail",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "candidateName",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "jobTitle",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "jobCode",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "jobLocation",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "company",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "status",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "history",
+            "type" : [ {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "CandidateTaskLog",
+                "fields" : [ {
+                  "name" : "taskId",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "id",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "logType",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "comments",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "scheduledOn",
+                  "type" : [ "long", "null" ],
+                  "default" : 0,
+                  "logicalType" : "timestamp-millis"
+                }, {
+                  "name" : "creatorName",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "assignedTo",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "assigneeName",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                }, {
+                  "name" : "createdOn",
+                  "type" : [ "long", "null" ],
+                  "default" : 0,
+                  "logicalType" : "timestamp-millis"
+                }, {
+                  "name" : "createdBy",
+                  "type" : [ "string", "null" ],
+                  "default" : ""
+                } ]
+              }
+            }, "null" ],
+            "default" : [ ]
+          }, {
+            "name" : "dueDate",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          }, {
+            "name" : "assignedTo",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "createdOn",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          }, {
+            "name" : "createdBy",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "modifiedOn",
+            "type" : [ "long", "null" ],
+            "default" : 0,
+            "logicalType" : "timestamp-millis"
+          }, {
+            "name" : "modifiedBy",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "workspaceId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "workspaceName",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "eventType",
+            "type" : [ {
+              "type" : "enum",
+              "name" : "CandidateTaskEvent",
+              "symbols" : [ "CREATED", "UPDATED", "CLOSED" ]
+            }, "null" ],
+            "default" : "CREATED"
+          }, {
+            "name" : "auditAction",
+            "type" : [ {
+              "type" : "record",
+              "name" : "AuditActionAVRO",
+              "namespace" : "com.wisestep.domain.avrogenerated",
+              "fields" : [ {
+                "name" : "id",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "action",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "entityType",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "entityId",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "ip",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "firstName",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "lastName",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "createdOn",
+                "type" : [ "long", "null" ],
+                "default" : 0,
+                "logicalType" : "timestamp-millis"
+              }, {
+                "name" : "createdBy",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "browserData",
+                "type" : [ {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "record",
+                    "name" : "AuditActionDataAVRO",
+                    "fields" : [ {
+                      "name" : "key",
+                      "type" : [ "string", "null" ]
+                    }, {
+                      "name" : "value",
+                      "type" : [ "string", "null" ]
+                    } ]
+                  }
+                }, "null" ],
+                "default" : [ ]
+              }, {
+                "name" : "updatedFields",
+                "type" : [ {
+                  "type" : "array",
+                  "items" : "AuditActionDataAVRO"
+                }, "null" ],
+                "default" : [ ]
+              }, {
+                "name" : "data",
+                "type" : [ {
+                  "type" : "array",
+                  "items" : "AuditActionDataAVRO"
+                }, "null" ],
+                "default" : [ ]
+              }, {
+                "name" : "workspaceId",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              }, {
+                "name" : "workspaceName",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              } ]
+            }, "null" ],
+            "default" : null
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "mappedCandidateResumes",
+      "type" : [ {
+        "type" : "array",
+        "items" : "CandidateResume"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "candidateLanguages",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "CandidateLanguage",
+          "fields" : [ {
+            "name" : "candidateInteractionId",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "id",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "languageName",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "fluencyLevel",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "competency",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "source",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "workAuthorizationCategory",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "crmState",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "candidatePersonalId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "consentGiven",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "tags",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "stageDate",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    }, {
+      "name" : "isAddedByCandidate",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "jobPreferencePermanent",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "jobPreferenceContract",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "commPreferenceEmail",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "commPreferencePhone",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "isJobClosedForAssigningRecruiters",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "timeToPost",
+      "type" : [ "long", "null" ],
+      "default" : 0
+    }, {
+      "name" : "profileURLs",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "eventType",
+      "type" : [ {
+        "type" : "enum",
+        "name" : "CandidateEvents",
+        "symbols" : [ "CREATED", "UPDATED", "UPDATE_NOTES_STATE_STAGE" ]
+      }, "null" ],
+      "default" : "UPDATED"
+    }, {
+      "name" : "indexed",
+      "type" : [ "boolean", "null" ],
+      "default" : true
+    }, {
+      "name" : "workspaceId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "candidateStatusTags",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ "submitted" ]
+    }, {
+      "name" : "slug",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "workspaceName",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "searchQueryTrackingId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "fax",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "interests",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "desiredJobTitles",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "workPermitDocuments",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "imageUrl",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "likelyToMove",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "likelyToMoveScore",
+      "type" : [ "int", "null" ],
+      "default" : 0
+    }, {
+      "name" : "workPreferences",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "CandidateWorkPreference",
+          "fields" : [ {
+            "name" : "employmentType",
+            "type" : [ {
+              "type" : "array",
+              "items" : "string"
+            }, "null" ],
+            "default" : [ ]
+          }, {
+            "name" : "annualSalary",
+            "type" : [ {
+              "type" : "record",
+              "name" : "CandidateRate",
+              "fields" : [ {
+                "name" : "min",
+                "type" : [ "int", "null" ],
+                "default" : 0
+              }, {
+                "name" : "max",
+                "type" : [ "int", "null" ],
+                "default" : 0
+              }, {
+                "name" : "currency",
+                "type" : [ "string", "null" ],
+                "default" : ""
+              } ]
+            }, "null" ],
+            "default" : {
+              "min" : 0,
+              "max" : 0,
+              "currency" : ""
+            }
+          }, {
+            "name" : "willingToRelocate",
+            "type" : [ "boolean", "null" ],
+            "default" : false
+          }, {
+            "name" : "travelPreference",
+            "type" : [ "int", "null" ],
+            "default" : 0
+          }, {
+            "name" : "hourlyRate",
+            "type" : [ "CandidateRate", "null" ],
+            "default" : {
+              "min" : 0,
+              "max" : 0,
+              "currency" : ""
+            }
+          }, {
+            "name" : "preferredWorkAreas",
+            "type" : [ {
+              "type" : "array",
+              "items" : "Location"
+            }, "null" ],
+            "default" : [ ]
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "candidateSkills",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "CandidateSkill",
+          "fields" : [ {
+            "name" : "skill",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "score",
+            "type" : [ "int", "null" ],
+            "default" : 0
+          }, {
+            "name" : "yearsUsed",
+            "type" : [ "int", "null" ],
+            "default" : 0
+          }, {
+            "name" : "lastUsed",
+            "type" : [ "int", "null" ],
+            "default" : 0
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "socialProfiles",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "CandidateSocialProfile",
+          "fields" : [ {
+            "name" : "source",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "url",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "icon_64",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "hasVeteranStatus",
+      "type" : [ "boolean", "null" ],
+      "default" : false
+    }, {
+      "name" : "dateLastActiveOnJobBoard",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "candidateJobBoardId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "dateResumeLastUpdatedOnJobBoard",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "locations",
+      "type" : [ {
+        "type" : "array",
+        "items" : "Location"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "workPermits",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "education",
+      "type" : [ {
+        "type" : "array",
+        "items" : {
+          "type" : "record",
+          "name" : "CandidateEducation",
+          "fields" : [ {
+            "name" : "org",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "degree",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "location",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "major",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          }, {
+            "name" : "description",
+            "type" : [ "string", "null" ],
+            "default" : ""
+          } ]
+        }
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "experience",
+      "type" : [ {
+        "type" : "record",
+        "name" : "CandidateExperience",
+        "fields" : [ {
+          "name" : "current",
+          "type" : [ {
+            "type" : "record",
+            "name" : "CandidateExperienceInfo",
+            "fields" : [ {
+              "name" : "title",
+              "type" : [ "string", "null" ],
+              "default" : ""
+            }, {
+              "name" : "org",
+              "type" : [ "string", "null" ],
+              "default" : ""
+            }, {
+              "name" : "location",
+              "type" : [ "string", "null" ],
+              "default" : ""
+            }, {
+              "name" : "periodStart",
+              "type" : [ {
+                "type" : "record",
+                "name" : "CandidateExperiencePeriod",
+                "fields" : [ {
+                  "name" : "year",
+                  "type" : [ "int", "null" ],
+                  "default" : 0
+                }, {
+                  "name" : "month",
+                  "type" : [ "int", "null" ],
+                  "default" : 0
+                }, {
+                  "name" : "day",
+                  "type" : [ "int", "null" ],
+                  "default" : 0
+                } ]
+              }, "null" ],
+              "default" : {
+                "year" : 0,
+                "month" : 0,
+                "day" : 0
+              }
+            }, {
+              "name" : "periodEnd",
+              "type" : [ "CandidateExperiencePeriod", "null" ],
+              "default" : {
+                "year" : 0,
+                "month" : 0,
+                "day" : 0
+              }
+            } ]
+          }, "null" ],
+          "default" : {
+            "title" : "",
+            "org" : "",
+            "location" : "",
+            "periodStart" : {
+              "year" : 0,
+              "month" : 0,
+              "day" : 0
+            },
+            "periodEnd" : {
+              "year" : 0,
+              "month" : 0,
+              "day" : 0
+            }
+          }
+        }, {
+          "name" : "history",
+          "type" : [ {
+            "type" : "array",
+            "items" : "CandidateExperienceInfo"
+          }, "null" ],
+          "default" : [ ]
+        } ]
+      }, "null" ],
+      "default" : {
+        "current" : {
+          "title" : "",
+          "org" : "",
+          "location" : "",
+          "periodStart" : {
+            "year" : 0,
+            "month" : 0,
+            "day" : 0
+          },
+          "periodEnd" : {
+            "year" : 0,
+            "month" : 0,
+            "day" : 0
+          }
+        },
+        "history" : [ ]
+      }
+    }, {
+      "name" : "workPermitLocations",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "securityAllowance",
+      "type" : [ {
+        "type" : "record",
+        "name" : "CandidateSecurityAllowance",
+        "fields" : [ {
+          "name" : "value",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "status",
+          "type" : [ "boolean", "null" ],
+          "default" : false
+        }, {
+          "name" : "issuingAgency",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "polygraph",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        }, {
+          "name" : "notes",
+          "type" : [ "string", "null" ],
+          "default" : ""
+        } ]
+      }, "null" ],
+      "default" : {
+        "value" : "",
+        "status" : false,
+        "issuingAgency" : "",
+        "polygraph" : "",
+        "notes" : ""
+      }
+    }, {
+      "name" : "bio",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "citizenship",
+      "type" : [ {
+        "type" : "array",
+        "items" : "string"
+      }, "null" ],
+      "default" : [ ]
+    }, {
+      "name" : "googleAccountId",
+      "type" : [ "string", "null" ],
+      "default" : ""
+    }, {
+      "name" : "auditAction",
+      "type" : [ "com.wisestep.domain.avrogenerated.AuditActionAVRO", "null" ],
+      "default" : null
+    }, {
+      "name" : "workspaceTagDate",
+      "type" : [ "long", "null" ],
+      "default" : 0,
+      "logicalType" : "timestamp-millis"
+    } ]
+  }
+  

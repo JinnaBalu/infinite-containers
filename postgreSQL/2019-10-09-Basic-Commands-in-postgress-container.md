@@ -22,9 +22,9 @@ docker exec -it postgres bash
 
 psql -Upostgress
 
-CREATE USER platops WITH PASSWORD 'platops';
-CREATE DATABASE platopsdb;
-GRANT ALL PRIVILEGES ON DATABASE platopsdb TO platops;
+CREATE USER vibhuvi WITH PASSWORD 'vibhuvi';
+CREATE DATABASE vibhuvidata;
+GRANT ALL PRIVILEGES ON DATABASE vibhuvidata TO vibhuvi;
 ```
 
 ### Run psql commands without entering the container
@@ -32,19 +32,19 @@ GRANT ALL PRIVILEGES ON DATABASE platopsdb TO platops;
 - To run `psql`
 
 ```bash
-docker exec -it postgres psql -U platops
+docker exec -it postgres psql -U vibhuvi
 ```
 
 - Create a database
 
 ```bash
-docker exec -it postgres psql -U platops -c "create database platops"
+docker exec -it postgres psql -U vibhuvi -c "create database vibhuvi"
 ```
 
 - Run Select Query
 
 ```bash
-docker exec -it postgres psql -Upostgres -a platops -c 'SELECT * FROM posts;'
+docker exec -it postgres psql -Upostgres -a vibhuvi -c 'SELECT * FROM posts;'
 ```
 
 ### Import or Export with psql CLI
@@ -53,7 +53,7 @@ docker exec -it postgres psql -Upostgres -a platops -c 'SELECT * FROM posts;'
 - Backup Database
 
 ```bash
-docker exec -t postgres pg_dumpall -c -U platops > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+docker exec -t postgres pg_dumpall -c -U vibhuvi > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
 ```
 
 - Restore Databases

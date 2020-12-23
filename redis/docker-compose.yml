@@ -7,3 +7,16 @@ services:
       - 6379:6379
     volumes:
      - ./data:/data
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports: ["8001:8001"]
+    environment:
+      RIPORT: 8080 #Default: 8001
+      RIHOST: 0.0.0.0 # Default: "0.0.0.0"
+      RIHOMEDIR: "/ri_data" # Default: "~/.redisinsight" on desktop, "/db" on docker.
+      RILOGDIR: "/ri_data"
+    volumes:
+      - redisinsight:/ri_data
+volumes:
+  redisinsight: {}

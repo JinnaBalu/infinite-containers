@@ -1,11 +1,20 @@
 cat <<EOF >> docker-compose.yml
 version: '3.7'
 services:
+  redis-three:
+    image: redis:6
+    container_name: redis_replica_three
+    command: ["redis-server", "--appendonly", "yes", "--bind", "0.0.0.0"]
+    ports: ["6379:6379"]
+    volumes:
+     - redisdata:/data
+    networks:
+      vibhuvi_network_redis:
   sentinel-three:
     image: redis:6
     container_name: sentinel_three
     command: ["redis-server", "--appendonly", "yes", "--bind", "0.0.0.0"]
-    ports: ["26379:6379"]
+    ports: ["26379:26379"]
     volumes:
       - ./sentinel-three.conf:/etc/sentinel.conf
     command: redis-server /etc/sentinel.conf --sentinel
@@ -13,4 +22,7 @@ services:
       vibhuvi_network_redis:
 networks:
   vibhuvi_network_redis:
+volumes:
+  redisdata:
+    driver: "local"
 EOF

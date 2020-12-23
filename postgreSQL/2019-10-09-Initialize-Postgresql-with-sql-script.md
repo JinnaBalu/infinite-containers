@@ -26,7 +26,7 @@ services:
     container_name: postgres
     volumes:
       # Uncomment below to maintain the peristant data
-      # - platops-data:/var/lib/postgresql/data/
+      # - vibhuvi-data:/var/lib/postgresql/data/
       # Uncomment bellow to intialize the container with data by creating the respective file
       # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
@@ -46,7 +46,7 @@ services:
       - 8080:8080
 
 volumes:
-  platops-data:
+  vibhuvi-data:
 networks:
   stack:
 
@@ -57,9 +57,9 @@ networks:
 - Created a `init.sql` with the following
 
 ```sql
-CREATE USER platops WITH PASSWORD 'platops';
-CREATE DATABASE platopsdb;
-GRANT ALL PRIVILEGES ON DATABASE platopsdb TO platops;
+CREATE USER vibhuvi WITH PASSWORD 'vibhuvi';
+CREATE DATABASE vibhuvidata;
+GRANT ALL PRIVILEGES ON DATABASE vibhuvidata TO vibhuvi;
 ```
 
 - RUN container with `docker-compose up -d`, this will start your container with initializing the database with the above scripts.

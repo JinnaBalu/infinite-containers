@@ -78,6 +78,16 @@ curl -XPUT 'localhost:9200/_settings' -H 'Content-Type: application/json' -d '
 }'
 ```
 
+curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "transient": {
+    "cluster.routing.allocation.disk.watermark.low": "97%",
+    "cluster.routing.allocation.disk.watermark.high": "98%",
+    "cluster.routing.allocation.disk.watermark.flood_stage": "99%"
+  }
+}
+'
+
 ### Create the Indice
 
 - First, let's create a twitter user, and add some tweets
@@ -85,7 +95,7 @@ curl -XPUT 'localhost:9200/_settings' -H 'Content-Type: application/json' -d '
 ```bash
 curl -XPUT 'http://127.0.0.1:9200/twitter/user/kimchy' -d '{ "name" : "Shay Banon" }'
 
-curl -XPUT 'http://127.0.0.1:9200/twitter/tweet/1' -d '
+curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
 {
     "user": "kimchy",
     "postDate": "2009-11-15T13:12:00",
@@ -99,6 +109,29 @@ curl -XPUT 'http://127.0.0.1:9200/twitter/tweet/2' -d '
     "message": "Balu tweet, will it be indexed?"
 }'
 ```
+
+curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*" 
+  }
+}
+'
+curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "action.auto_create_index": "false" 
+  }
+}
+'
+curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "action.auto_create_index": "true" 
+  }
+}
+'
+
 
 - Now, let's see if the information was added by GETting it:
 
