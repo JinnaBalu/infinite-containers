@@ -4,62 +4,144 @@ networks:
 
 services:
   postgres:
-    image: postgres:12
+    image: postgres:13.1
     container_name: postgres
     environment:
       - POSTGRES_USER=airflow
-      - POSTGRES_PASSWORD=airflow
       - POSTGRES_DB=airflow
+      - POSTGRES_PASSWORD=airflow
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - "5433:5432"
-  scheduler:
-    image: apache/airflow
-    container_name: scheduler
-    restart: always
+      - 5432:5432
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./database/data:/var/lib/postgresql/data/pgdata
+      - ./database/logs:/var/lib/postgresql/data/log
+    command: >
+     postgres
+       -c listen_addresses=*
+       -c logging_collector=on
+       -c log_destination=stderr
+       -c max_connections=200
+    networks:
+      - airflow
+  redis:
+    image: redis:5.0.5
+    container_name: redis
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - 6379:6379
+    networks:
+      - airflow
+  webserver:
+    env_file:
+      - .env
+    image: apache/airflow:1.10.14
+    container_name: webserver
+    ports:
+      - 8080:8080
+    volumes:
+      - ./airflow_files/dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - ./files:/opt/airflow/files
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 8s
+        max_attempts: 3
     depends_on:
       - postgres
-      - webserver
-    environment:
-      - AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
-      - AIRFLOW__CORE__FERNET_KEY=81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
-      - AIRFLOW_CONN_METADATA_DB=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
-      - AIRFLOW_VAR__METADATA_DB_SCHEMA=airflow
-      - AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
-    ports:
-      - "8793:8793"
-    volumes:
-      - ./dags:/opt/airflow/dags
-      - ./airflow-logs:/opt/airflow/logs
-    command: scheduler
+      - redis
+    command: webserver
     healthcheck:
-      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      test: ["CMD-SHELL", "[ -f /opt/airflow/airflow-webserver.pid ]"]
       interval: 30s
       timeout: 30s
       retries: 3
-  webserver:
-    image: apache/airflow
-    hostname: webserver
-    restart: always
-    container_name: webserver
-    depends_on:
-      - postgres
-    environment:
-      - AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
-      - AIRFLOW__CORE__FERNET_KEY=81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
-      - AIRFLOW_CONN_METADATA_DB=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
-      - AIRFLOW_VAR__METADATA_DB_SCHEMA=airflow
-      - AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
-    volumes:
-      - ./dags:/opt/airflow/dags
-      - ./scripts:/opt/airflow/scripts
-      - ./airflow-logs:/opt/airflow/logs
+    networks:
+      - airflow
+  flower:
+    image: apache/airflow:1.10.14
+    container_name: flower
+    env_file:
+      - .env
     ports:
-      - "8080:8080"
-    entrypoint: ./scripts/airflow-entrypoint.sh
-    healthcheck:
-      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
-      interval: 30s
-      timeout: 30s
-      retries: 32
+      - 5555:5555
+    depends_on:
+      - redis
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 8s
+        max_attempts: 3
+    volumes:
+      - airflow_logs:/opt/airflow/logs
+    command: flower
+    networks:
+      - airflow
+  scheduler:
+    image: apache/airflow:1.10.14
+    container_name: scheduler
+    env_file:
+      - .env
+    volumes:
+      - ./airflow_files/dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - ./files:/opt/airflow/files
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: scheduler
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 8s
+        max_attempts: 3
+    networks:
+      - airflow
+  worker:
+    image: apache/airflow:1.10.14
+    container_name: worker
+    env_file:
+      - .env
+    volumes:
+      - ./airflow_files/dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - ./files:/opt/airflow/files
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: worker
+    depends_on:
+      - scheduler
+    
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 8s
+        max_attempts: 3
+    networks:
+      - airflow
+  initdb:
+    image: apache/airflow:1.10.14
+    container_name: initdb
+    env_file:
+      - .env
+    volumes:
+      - ./airflow_files/dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - ./files:/opt/airflow/files
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: /bin/bash
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 8s
+        max_attempts: 5
+    command: -c "airflow db init"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - airflow
+volumes:
+  airflow_logs:
