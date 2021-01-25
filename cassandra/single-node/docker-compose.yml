@@ -2,6 +2,7 @@ version: "3.7"
 services:
   cassandra-one:
     image: cassandra:3.9
+    container_name: cassandra
     # volumes:
     #     - cassandra-volume:/var/lib/cassandra/
     ports:

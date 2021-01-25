@@ -1,14 +1,6 @@
-CREATE USER vibhuvi WITH PASSWORD 'vibhuvi';
-CREATE DATABASE vibhuvidata;
-GRANT ALL PRIVILEGES ON DATABASE vibhuvidata TO vibhuvi;
-
-DROP DATABASE IF EXISTS myschema;
-
-CREATE DATABASE myschema;
-
--- Make sure we're using our `myschema` database
-\c myschema;
-
+CREATE USER postgress WITH PASSWORD 'postgress';
+CREATE DATABASE pdata;
+GRANT ALL PRIVILEGES ON DATABASE pdata TO vibhuvi;
 
 CREATE SEQUENCE IF NOT EXISTS recipient_seq
     START WITH 1

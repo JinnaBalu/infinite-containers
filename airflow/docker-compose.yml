@@ -1,0 +1,65 @@
+version: '3.2'
+networks:
+  airflow:
+
+services:
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    ports:
+      - "5433:5432"
+  scheduler:
+    image: apache/airflow
+    container_name: scheduler
+    restart: always
+    depends_on:
+      - postgres
+      - webserver
+    environment:
+      - AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__CORE__FERNET_KEY=81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
+      - AIRFLOW_CONN_METADATA_DB=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW_VAR__METADATA_DB_SCHEMA=airflow
+      - AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
+    ports:
+      - "8793:8793"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./airflow-logs:/opt/airflow/logs
+    command: scheduler
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+  webserver:
+    image: apache/airflow
+    hostname: webserver
+    restart: always
+    container_name: webserver
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__CORE__FERNET_KEY=81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
+      - AIRFLOW_CONN_METADATA_DB=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW_VAR__METADATA_DB_SCHEMA=airflow
+      - AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+      - ./airflow-logs:/opt/airflow/logs
+    ports:
+      - "8080:8080"
+    entrypoint: ./scripts/airflow-entrypoint.sh
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 32

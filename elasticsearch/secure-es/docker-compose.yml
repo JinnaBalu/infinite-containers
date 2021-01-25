@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    container_name: elasticsearch
+    ports: ['9200:9200', '9300:9300']
+    secrets:
+      - source: elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+      - source: elastic-certificates.p12
+        target: /usr/share/elasticsearch/config/elastic-certificates.p12
+    volumes:
+      - 'es_data:/usr/share/elasticsearch/data'
+    healthcheck:
+      test: curl -s https://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    container_name: kibana
+    secrets:
+      - source: kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+    ports: ['5601:5601']
+    depends_on: ['elasticsearch']
+    healthcheck:
+      test: curl -s https://localhost:5601 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+secrets:
+  elasticsearch.yml:
+    file: ./config/elasticsearch/elasticsearch.yml
+  elastic-certificates.p12:
+    file: ./config/elasticsearch/elastic-certificates.p12
+  kibana.yml:
+    file: ./config/kibana/kibana.yml
+volumes:
+  es_data:
