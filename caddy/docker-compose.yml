@@ -1,0 +1,27 @@
+version: "3"
+services:
+  static-app:
+    image: nginx:latest
+    container_name: static-app
+    environment:
+      - url=https://www.test-balu.com
+    volumes:
+      - ./app:/usr/share/nginx/html
+    deploy:
+      replicas: 1
+    ports:
+      - 8082:80
+  caddy:
+    restart: always
+    image: caddy:2
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  caddy_data: 
+  caddy_config:

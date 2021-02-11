@@ -1,16 +1,26 @@
-version: 3.8
+version: '3.7'
 services:
-    jenkins:
-        image:
-        container_name: jenkins
-        volumes: ["jenkins_data:/var/jenkins_home"]
-        environment:
-        ports: ["8080:8080", "50000:50000"]
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - ${UI_PORT:-8080}:8080
+      - ${AGENTS_PORT:-50000}:50000
+    privileged: true
+    # environment:
+    #   - JENKINS_OPTS="--prefix=/jenkins"
+    networks:
+      - cicd
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
 volumes:
-    jenkins_data:
-        driver: local
-        driver_opts:
-            o: bind
-            type: none
-            device: $PWD/jenkins_home_data
-            
+  jenkins_home:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: bind
+      device: /var/data/jenkins_home
+networks:
+  cicd:

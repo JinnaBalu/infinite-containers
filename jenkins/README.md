@@ -1,32 +1,31 @@
-# Jenkins as a service in docker
+# Jenkins Container
 
-## Run jenkins as container
-
-```bash
-docker container run -d --name jenkins -p 8080:8080 jenkins:alpine
-```
-
-## Create a service in docker swarm
+## Run the container 
 
 ```bash
-docker service create --name jenkins -p 8080:8080 jenkins:alpine
+docker-compose -f docker-compose.yml up -d
 ```
+
+## Check the service status and logs
+
+```bash
+docker ps -a # List the containers 
+docker logs jenkins # Check the container logs
+```
+
+Jenkins up on [http://localhost:8080/](http://localhost:8080/)
+
+
+![Jenkins Home](jenkins_home.png "Jenkins Home")
+
 
 **NOTE : TO GET DEFAULT PASSWORD**
 
-- password will be in  */var/jenkins_home/secrets/initialAdminPassword*, of the container.
-
-- bash into container
-
 ```bash
-docker exec -it <DOCKER_CONTAINER_NAME> bash
+docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
-Above command will take you to the container, cat the default password file with 
-
-```bash
-cat /var/jenkins_home/secrets/initialAdminPassword
-```
+- `jenkins` - container name
 
 ## 1 Jenkins as a docker stack
 
